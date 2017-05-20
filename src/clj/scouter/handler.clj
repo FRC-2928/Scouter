@@ -4,7 +4,8 @@
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
 
 (defroutes app-routes
-  (GET "/" [] "Hello World")
+  (GET "/hello" [] "Hello world pt 2")
+  (GET "/" [] "<body>Hello World</body>")
   (route/not-found "Not Found"))
 
 (def app
