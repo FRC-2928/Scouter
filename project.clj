@@ -13,7 +13,8 @@
                                               com.sun.jmx/jmxri]]
                  [org.clojure/java.jdbc "0.3.6"]
                  [com.h2database/h2 "1.4.195"]
-                 [org.clojure/clojurescript "1.9.542"]]
+                 [org.clojure/clojurescript "1.9.542"]
+                 [reagent "0.6.2"]]
   :plugins [[lein-ring "0.9.7"]
             [lein-cljsbuild "1.1.6"]]
   :ring {:handler scouter.handler/app}

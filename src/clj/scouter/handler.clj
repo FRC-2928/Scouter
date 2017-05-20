@@ -5,7 +5,8 @@
 
 (defroutes app-routes
   (GET "/hello" [] "Hello world pt 2")
-  (GET "/" [] "<body>Hello World</body>")
+  (GET "/" [] "<head><script type=\"text/javascript\" src=\"js/main.js\"></script></head><body>Hello World<script>scouter.main.run();</script></body>")
+  (route/resources "/")
   (route/not-found "Not Found"))
 
 (def app
