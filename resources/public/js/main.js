@@ -59707,8 +59707,17 @@ goog.provide("scouter.main");
 goog.require("cljs.core");
 goog.require("reagent.core");
 scouter.main.state = reagent.core.atom.call(null, new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "score", "score", -1963588780), 0, new cljs.core.Keyword(null, "team", "team", 1355747699), "xxxx"], null));
-scouter.main.test_component = function scouter$main$test_component(message) {
+scouter.main.webTitle = function scouter$main$webTitle(message) {
   return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "h1", "h1", -1896887462), message], null);
+};
+scouter.main.subWebTitle = function scouter$main$subWebTitle(message) {
+  return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "h5", "h5", -1829156625), message], null);
+};
+scouter.main.subPage = function scouter$main$subPage(message) {
+  return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "h6", "h6", 557293780), message], null);
+};
+scouter.main.fieldShenanigeins = function scouter$main$fieldShenanigeins(message) {
+  return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "h8", "h8", -1986752923), message], null);
 };
 scouter.main.button = function scouter$main$button(value, change, key) {
   return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "button", "button", 1456579943), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "on-click", "on-click", 1632826543), function() {
@@ -59718,24 +59727,37 @@ scouter.main.button = function scouter$main$button(value, change, key) {
   }], null), change], null);
 };
 scouter.main.number_input = function scouter$main$number_input(value, key) {
-  return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "input", "input", 556931961), new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "type", "type", 1174270348), "number", new cljs.core.Keyword(null, "value", "value", 305978217), key.call(null, cljs.core.deref.call(null, value)), new cljs.core.Keyword(null, "on-change", "on-change", -732046149), function(p1__13475_SHARP_) {
-    return cljs.core.reset_BANG_.call(null, value, cljs.core.assoc_in.call(null, cljs.core.deref.call(null, value), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [key], null), p1__13475_SHARP_.target.value));
+  return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "input", "input", 556931961), new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "type", "type", 1174270348), "number", new cljs.core.Keyword(null, "value", "value", 305978217), key.call(null, cljs.core.deref.call(null, value)), new cljs.core.Keyword(null, "on-change", "on-change", -732046149), function(p1__13517_SHARP_) {
+    return cljs.core.reset_BANG_.call(null, value, cljs.core.assoc_in.call(null, cljs.core.deref.call(null, value), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [key], null), p1__13517_SHARP_.target.value));
   }], null)], null);
 };
 scouter.main.text_input = function scouter$main$text_input(value, key) {
-  return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "input", "input", 556931961), new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "type", "type", 1174270348), "text", new cljs.core.Keyword(null, "value", "value", 305978217), key.call(null, cljs.core.deref.call(null, value)), new cljs.core.Keyword(null, "on-change", "on-change", -732046149), function(p1__13476_SHARP_) {
-    return cljs.core.reset_BANG_.call(null, value, cljs.core.assoc_in.call(null, cljs.core.deref.call(null, value), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [key], null), p1__13476_SHARP_.target.value));
+  return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "input", "input", 556931961), new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "type", "type", 1174270348), "text", new cljs.core.Keyword(null, "value", "value", 305978217), key.call(null, cljs.core.deref.call(null, value)), new cljs.core.Keyword(null, "on-change", "on-change", -732046149), function(p1__13518_SHARP_) {
+    return cljs.core.reset_BANG_.call(null, value, cljs.core.assoc_in.call(null, cljs.core.deref.call(null, value), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [key], null), p1__13518_SHARP_.target.value));
   }], null)], null);
 };
 scouter.main.score_component = function scouter$main$score_component(value, before, after, key) {
-  return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "div.numberinput", "div.numberinput", -161208033), cljs.core.map.call(null, function(p1__13477_SHARP_) {
-    return scouter.main.button.call(null, value, p1__13477_SHARP_, key);
-  }, before), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [scouter.main.number_input, value, key], null), cljs.core.map.call(null, function(p1__13478_SHARP_) {
-    return scouter.main.button.call(null, value, p1__13478_SHARP_, key);
+  return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "div.numberinput", "div.numberinput", -161208033), cljs.core.map.call(null, function(p1__13519_SHARP_) {
+    return scouter.main.button.call(null, value, p1__13519_SHARP_, key);
+  }, before), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [scouter.main.number_input, value, key], null), cljs.core.map.call(null, function(p1__13520_SHARP_) {
+    return scouter.main.button.call(null, value, p1__13520_SHARP_, key);
   }, after)], null);
 };
+scouter.main.graph_component = function scouter$main$graph_component(id) {
+  return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "div", "div", 1057191632), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "class", "class", -2030961996), scouter.main.graph, new cljs.core.Keyword(null, "id", "id", -1388402092), id], null)], null);
+};
 scouter.main.page_component = function scouter$main$page_component() {
-  return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [scouter.main.text_input, scouter.main.state, cljs.core.name], null)], null);
+  return cljs.core.PersistentVector.fromArray([new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [scouter.main.webTitle, "Thirst Robotics Competition"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [scouter.main.subWebTitle, [cljs.core.str.cljs$core$IFn$_invoke$arity$1("Team "), cljs.core.str.cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "team", "team", 1355747699)).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null, 
+  scouter.main.state)))].join("")], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "Username"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), scouter.main.Event], null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "hr", "hr", 1377740067)], null), 
+  new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [scouter.main.subWebTitle, "2018 ~ waterGate"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "match number: "], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "team you're scouting: "], null), new cljs.core.PersistentVector(null, 
+  2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "type of Scouting"], null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "hr", "hr", 1377740067)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [scouter.main.subPage, "Pit"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, 
+  "p", "p", 151049309), "Drive Train: "], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "Speed: "], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "prefered starting spot"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), 
+  "auto type"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "com1: ______ com4:_______"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "com2: ______ com5:_______"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "com3: ______ com6:_______"], 
+  null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "Other scouting notes: "], null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "hr", "hr", 1377740067)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [scouter.main.subPage, "Field"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, 
+  [scouter.main.fieldShenanigeins, "Auto"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "Baseline: "], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "com1"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "com2"], null), 
+  new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [scouter.main.fieldShenanigeins, "Teleopt"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "com1"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "com2"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, 
+  [new cljs.core.Keyword(null, "p", "p", 151049309), "com3"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [scouter.main.fieldShenanigeins, "End Game"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "Climb"], null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "hr", "hr", 1377740067)], null), new cljs.core.PersistentVector(null, 
+  2, 5, cljs.core.PersistentVector.EMPTY_NODE, [scouter.main.subPage, "Scouting Meeting"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [scouter.main.fieldShenanigeins, ""], null)], true);
 };
 scouter.main.run = function scouter$main$run() {
   return reagent.core.render.call(null, new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [scouter.main.score_component, scouter.main.state, cljs.core.PersistentVector.EMPTY, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [1, 5], null), new cljs.core.Keyword(null, "score", "score", -1963588780)], null), document.body);
