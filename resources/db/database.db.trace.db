@@ -1,0 +1,450 @@
+2017-05-20 19:51:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+CREATE TABLE matches(
+	ID INT,
+	RED1 INT,
+	RED2 INT,
+	RED3 INT,
+	BLUE1 INT,
+	BLUE2 INT,
+	BLUE3 INT,
+	RED_POINTS INT,
+	BLUE_POINTS INT,
+	EVENT VARCHAR(20),
+	PRIMARY KEY(ID));
+--;;
+CREATE TABLE team_matches(
+	ID INT,
+	TEAM INT,
+	AUTOGEARS INT,
+	LINECROSSED BOOLEAN,
+	SHOTS INT,
+	PRIMARY KEY(ID));
+--;;
+CREATE TABLE teams(
+	ID INT,
+	NUMBER VARCHAR(5),
+	NAME VARCHAR(63)
+	PRIMARY KEY(ID));
+ [90002-195]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:113)
+	at org.h2.command.CommandList.query(CommandList.java:54)
+	at org.h2.command.Command.executeQuery(Command.java:201)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:111)
+	at clojure.java.jdbc$db_query_with_resultset$run_query_with_params__5705.invoke(jdbc.clj:790)
+	at clojure.java.jdbc$db_query_with_resultset.invokeStatic(jdbc.clj:800)
+	at clojure.java.jdbc$db_query_with_resultset.invoke(jdbc.clj:757)
+	at clojure.java.jdbc$query.invokeStatic(jdbc.clj:832)
+	at clojure.java.jdbc$query.doInvoke(jdbc.clj:804)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at scouter.db.db$migrate.invokeStatic(db.clj:13)
+	at scouter.db.db$migrate.invoke(db.clj:12)
+	at scouter.handler$eval5789.invokeStatic(form-init4733285719166550577.clj:1)
+	at scouter.handler$eval5789.invoke(form-init4733285719166550577.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6927)
+	at clojure.lang.Compiler.eval(Compiler.java:6890)
+	at clojure.core$eval.invokeStatic(core.clj:3105)
+	at clojure.core$eval.invoke(core.clj:3101)
+	at clojure.main$repl$read_eval_print__7408$fn__7411.invoke(main.clj:240)
+	at clojure.main$repl$read_eval_print__7408.invoke(main.clj:240)
+	at clojure.main$repl$fn__7417.invoke(main.clj:258)
+	at clojure.main$repl.invokeStatic(main.clj:258)
+	at clojure.main$repl.doInvoke(main.clj:174)
+	at clojure.lang.RestFn.invoke(RestFn.java:1523)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__4291.invoke(interruptible_eval.clj:87)
+	at clojure.lang.AFn.applyToHelper(AFn.java:152)
+	at clojure.lang.AFn.applyTo(AFn.java:144)
+	at clojure.core$apply.invokeStatic(core.clj:646)
+	at clojure.core$with_bindings_STAR_.invokeStatic(core.clj:1881)
+	at clojure.core$with_bindings_STAR_.doInvoke(core.clj:1881)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invokeStatic(interruptible_eval.clj:85)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invoke(interruptible_eval.clj:55)
+	at clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__4336$fn__4339.invoke(interruptible_eval.clj:222)
+	at clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__4331.invoke(interruptible_eval.clj:190)
+	at clojure.lang.AFn.run(AFn.java:22)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-05-20 19:56:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "
+    
+CREATE TABLE TEAMS(
+	ID INT,
+	NUMBER VARCHAR(5),
+	NAME VARCHAR(63)
+	PRIMARY KEY([*]ID));
+ "; expected "HASH, AUTO_INCREMENT, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+
+--;;
+CREATE TABLE teams(
+	ID INT,
+	NUMBER VARCHAR(5),
+	NAME VARCHAR(63)
+	PRIMARY KEY(ID));
+ [42001-195]
+2017-05-20 19:59:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "MATCHES" already exists; SQL statement:
+CREATE TABLE matches(
+	ID INT NOT NULL AUTO_INCREMENT,
+	RED1 INT,
+	RED2 INT,
+	RED3 INT,
+	BLUE1 INT,
+	BLUE2 INT,
+	BLUE3 INT,
+	RED_POINTS INT,
+	BLUE_POINTS INT,
+	EVENT VARCHAR(20),
+	PRIMARY KEY(ID));
+--;;
+CREATE TABLE team_matches(
+	ID INT NOT NULL AUTO_INCREMENT,
+	TEAM INT,
+	AUTOGEARS INT,
+	LINECROSSED BOOLEAN,
+	SHOTS INT,
+	PRIMARY KEY(ID));
+--;;
+CREATE TABLE teams(
+	ID INT NOT NULL AUTO_INCREMENT,
+	NUMBER VARCHAR(5),
+	NAME VARCHAR(63)
+	PRIMARY KEY(ID));
+ [42101-195]
+2017-05-20 19:59:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TEAMS" not found; SQL statement:
+DROP TABLE matches;
+DROP TABLE team_matches;
+DROP TABLE teams;
+ [42102-195]
+2017-05-20 19:59:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "
+    
+CREATE TABLE TEAMS(
+	ID INT NOT NULL AUTO_INCREMENT,
+	NUMBER VARCHAR(5),
+	NAME VARCHAR(63)
+	PRIMARY KEY([*]ID));
+ "; expected "HASH, AUTO_INCREMENT, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+
+--;;
+CREATE TABLE teams(
+	ID INT NOT NULL AUTO_INCREMENT,
+	NUMBER VARCHAR(5),
+	NAME VARCHAR(63)
+	PRIMARY KEY(ID));
+ [42001-195]
+2017-05-20 20:04:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "MATCHES" already exists; SQL statement:
+CREATE TABLE matches (
+	ID INT NOT NULL AUTO_INCREMENT,
+	RED1 INT,
+	RED2 INT,
+	RED3 INT,
+	BLUE1 INT,
+	BLUE2 INT,
+	BLUE3 INT,
+	RED_POINTS INT,
+	BLUE_POINTS INT,
+	EVENT VARCHAR(20),
+	PRIMARY KEY(ID));
+--;;
+CREATE TABLE team_matches (
+	ID INT NOT NULL AUTO_INCREMENT,
+	TEAM INT,
+	AUTOGEARS INT,
+	LINECROSSED BOOLEAN,
+	SHOTS INT,
+	PRIMARY KEY(ID));
+--;;
+CREATE TABLE teams (
+	ID INT NOT NULL AUTO_INCREMENT,
+	NUMBER VARCHAR(5),
+	NAME VARCHAR(63)
+	PRIMARY KEY(ID));
+ [42101-195]
+2017-05-20 20:04:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TEAMS" not found; SQL statement:
+DROP TABLE matches;
+DROP TABLE team_matches;
+DROP TABLE teams;
+ [42102-195]
+2017-05-20 20:04:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "
+    
+CREATE TABLE TEAMS (
+	ID INT NOT NULL AUTO_INCREMENT,
+	NUMBER VARCHAR(5),
+	NAME VARCHAR(63)
+	PRIMARY KEY([*]ID));
+ "; expected "HASH, AUTO_INCREMENT, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+
+--;;
+CREATE TABLE teams (
+	ID INT NOT NULL AUTO_INCREMENT,
+	NUMBER VARCHAR(5),
+	NAME VARCHAR(63)
+	PRIMARY KEY(ID));
+ [42001-195]
+2017-05-20 20:07:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "MATCHES" already exists; SQL statement:
+CREATE TABLE matches (
+	ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	RED1 INT,
+	RED2 INT,
+	RED3 INT,
+	BLUE1 INT,
+	BLUE2 INT,
+	BLUE3 INT,
+	RED_POINTS INT,
+	BLUE_POINTS INT,
+	EVENT VARCHAR(20)
+);
+--;;
+CREATE TABLE team_matches (
+	ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	TEAM INT,
+	AUTOGEARS INT,
+	LINECROSSED BOOLEAN,
+	SHOTS INT
+);
+--;;
+CREATE TABLE teams (
+	ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	NUMBER VARCHAR(5),
+	NAME VARCHAR(63)
+);
+ [42101-195]
+2017-05-20 20:07:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TEAMS" not found; SQL statement:
+DROP TABLE matches;
+DROP TABLE team_matches;
+DROP TABLE teams;
+ [42102-195]
+2017-05-20 21:37:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "
+    
+CREATE TABLE TEAMS (
+	ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	NUMBER VARCHAR(5),
+	NAME VARCHAR(63)
+	PRIMARY_COLOR[*] VARCHAR(7),
+	SECONDARY_COLOR VARCHAR(7)
+);
+ "; expected "FOR, UNSIGNED, INVISIBLE, VISIBLE, NOT, NULL, AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+
+--;;
+CREATE TABLE teams (
+	ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	NUMBER VARCHAR(5),
+	NAME VARCHAR(63)
+	PRIMARY_COLOR VARCHAR(7),
+	SECONDARY_COLOR VARCHAR(7)
+);
+ [42001-195]
+2017-05-20 21:38:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "MATCHES" already exists; SQL statement:
+CREATE TABLE matches (
+	ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	RED1 INT,
+	RED2 INT,
+	RED3 INT,
+	BLUE1 INT,
+	BLUE2 INT,
+	BLUE3 INT,
+	MATCHNUMBER INT,
+	RED_POINTS INT,
+	BLUE_POINTS INT,
+	EVENT VARCHAR(20)
+);
+--;;
+CREATE TABLE team_matches (
+	ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	TEAM INT,
+	AUTOGEARS INT,
+	LINECROSSED BOOLEAN,
+	SHOTS INT
+);
+--;;
+CREATE TABLE teams (
+	ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	NUMBER VARCHAR(5),
+	NAME VARCHAR(63),
+	PRIMARY_COLOR VARCHAR(7),
+	SECONDARY_COLOR VARCHAR(7)
+);
+ [42101-195]
+2017-05-20 21:38:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TEAMS" not found; SQL statement:
+DROP TABLE matches;
+DROP TABLE team_matches;
+DROP TABLE teams;
+ [42102-195]
+2017-05-20 21:43:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM TEAMS WHERE =[*]F.NUMBER(?) "; expected "NOT, EXISTS, INTERSECTS"; SQL statement:
+SELECT * FROM teams WHERE =f.number(?) [42001-195]
+2017-05-20 21:44:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE number = ? [90001-195]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.update(Prepared.java:201)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:101)
+	at org.h2.command.Command.executeUpdate(Command.java:260)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:164)
+	at org.h2.jdbc.JdbcPreparedStatement.executeBatch(JdbcPreparedStatement.java:1215)
+	at clojure.java.jdbc$execute_batch.invokeStatic(jdbc.clj:401)
+	at clojure.java.jdbc$execute_batch.invoke(jdbc.clj:394)
+	at clojure.java.jdbc$db_do_execute_prepared_statement$fn__11360.invoke(jdbc.clj:733)
+	at clojure.java.jdbc$db_transaction_STAR_.invokeStatic(jdbc.clj:584)
+	at clojure.java.jdbc$db_transaction_STAR_.doInvoke(jdbc.clj:557)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at clojure.java.jdbc$db_do_execute_prepared_statement.invokeStatic(jdbc.clj:732)
+	at clojure.java.jdbc$db_do_execute_prepared_statement.invoke(jdbc.clj:717)
+	at clojure.java.jdbc$db_do_prepared.invokeStatic(jdbc.clj:753)
+	at clojure.java.jdbc$db_do_prepared.doInvoke(jdbc.clj:739)
+	at clojure.lang.RestFn.invoke(RestFn.java:464)
+	at clojure.java.jdbc$execute_BANG_$execute_helper__11386.invoke(jdbc.clj:855)
+	at clojure.java.jdbc$execute_BANG_.invokeStatic(jdbc.clj:860)
+	at clojure.java.jdbc$execute_BANG_.doInvoke(jdbc.clj:841)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at scouter.db.db$getTeam.invokeStatic(db.clj:24)
+	at scouter.db.db$getTeam.invoke(db.clj:23)
+	at scouter.handler$eval12625.invokeStatic(form-init882205602571562136.clj:1)
+	at scouter.handler$eval12625.invoke(form-init882205602571562136.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6927)
+	at clojure.lang.Compiler.eval(Compiler.java:6890)
+	at clojure.core$eval.invokeStatic(core.clj:3105)
+	at clojure.core$eval.invoke(core.clj:3101)
+	at clojure.main$repl$read_eval_print__7408$fn__7411.invoke(main.clj:240)
+	at clojure.main$repl$read_eval_print__7408.invoke(main.clj:240)
+	at clojure.main$repl$fn__7417.invoke(main.clj:258)
+	at clojure.main$repl.invokeStatic(main.clj:258)
+	at clojure.main$repl.doInvoke(main.clj:174)
+	at clojure.lang.RestFn.invoke(RestFn.java:1523)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__7160.invoke(interruptible_eval.clj:87)
+	at clojure.lang.AFn.applyToHelper(AFn.java:152)
+	at clojure.lang.AFn.applyTo(AFn.java:144)
+	at clojure.core$apply.invokeStatic(core.clj:646)
+	at clojure.core$with_bindings_STAR_.invokeStatic(core.clj:1881)
+	at clojure.core$with_bindings_STAR_.doInvoke(core.clj:1881)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invokeStatic(interruptible_eval.clj:85)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invoke(interruptible_eval.clj:55)
+	at clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__7205$fn__7208.invoke(interruptible_eval.clj:222)
+	at clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__7200.invoke(interruptible_eval.clj:190)
+	at clojure.lang.AFn.run(AFn.java:22)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-05-20 21:44:06 jdbc[3]: exception
+org.h2.jdbc.JdbcBatchUpdateException: Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE number = ? [90001-195]
+	at org.h2.jdbc.JdbcPreparedStatement.executeBatch(JdbcPreparedStatement.java:1234)
+	at clojure.java.jdbc$execute_batch.invokeStatic(jdbc.clj:401)
+	at clojure.java.jdbc$execute_batch.invoke(jdbc.clj:394)
+	at clojure.java.jdbc$db_do_execute_prepared_statement$fn__11360.invoke(jdbc.clj:733)
+	at clojure.java.jdbc$db_transaction_STAR_.invokeStatic(jdbc.clj:584)
+	at clojure.java.jdbc$db_transaction_STAR_.doInvoke(jdbc.clj:557)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at clojure.java.jdbc$db_do_execute_prepared_statement.invokeStatic(jdbc.clj:732)
+	at clojure.java.jdbc$db_do_execute_prepared_statement.invoke(jdbc.clj:717)
+	at clojure.java.jdbc$db_do_prepared.invokeStatic(jdbc.clj:753)
+	at clojure.java.jdbc$db_do_prepared.doInvoke(jdbc.clj:739)
+	at clojure.lang.RestFn.invoke(RestFn.java:464)
+	at clojure.java.jdbc$execute_BANG_$execute_helper__11386.invoke(jdbc.clj:855)
+	at clojure.java.jdbc$execute_BANG_.invokeStatic(jdbc.clj:860)
+	at clojure.java.jdbc$execute_BANG_.doInvoke(jdbc.clj:841)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at scouter.db.db$getTeam.invokeStatic(db.clj:24)
+	at scouter.db.db$getTeam.invoke(db.clj:23)
+	at scouter.handler$eval12625.invokeStatic(form-init882205602571562136.clj:1)
+	at scouter.handler$eval12625.invoke(form-init882205602571562136.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6927)
+	at clojure.lang.Compiler.eval(Compiler.java:6890)
+	at clojure.core$eval.invokeStatic(core.clj:3105)
+	at clojure.core$eval.invoke(core.clj:3101)
+	at clojure.main$repl$read_eval_print__7408$fn__7411.invoke(main.clj:240)
+	at clojure.main$repl$read_eval_print__7408.invoke(main.clj:240)
+	at clojure.main$repl$fn__7417.invoke(main.clj:258)
+	at clojure.main$repl.invokeStatic(main.clj:258)
+	at clojure.main$repl.doInvoke(main.clj:174)
+	at clojure.lang.RestFn.invoke(RestFn.java:1523)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__7160.invoke(interruptible_eval.clj:87)
+	at clojure.lang.AFn.applyToHelper(AFn.java:152)
+	at clojure.lang.AFn.applyTo(AFn.java:144)
+	at clojure.core$apply.invokeStatic(core.clj:646)
+	at clojure.core$with_bindings_STAR_.invokeStatic(core.clj:1881)
+	at clojure.core$with_bindings_STAR_.doInvoke(core.clj:1881)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invokeStatic(interruptible_eval.clj:85)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invoke(interruptible_eval.clj:55)
+	at clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__7205$fn__7208.invoke(interruptible_eval.clj:222)
+	at clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__7200.invoke(interruptible_eval.clj:190)
+	at clojure.lang.AFn.run(AFn.java:22)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+org.h2.jdbc.JdbcSQLException: Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE number = ? [90001-195]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.update(Prepared.java:201)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:101)
+	at org.h2.command.Command.executeUpdate(Command.java:260)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:164)
+	at org.h2.jdbc.JdbcPreparedStatement.executeBatch(JdbcPreparedStatement.java:1215)
+	at clojure.java.jdbc$execute_batch.invokeStatic(jdbc.clj:401)
+	at clojure.java.jdbc$execute_batch.invoke(jdbc.clj:394)
+	at clojure.java.jdbc$db_do_execute_prepared_statement$fn__11360.invoke(jdbc.clj:733)
+	at clojure.java.jdbc$db_transaction_STAR_.invokeStatic(jdbc.clj:584)
+	at clojure.java.jdbc$db_transaction_STAR_.doInvoke(jdbc.clj:557)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at clojure.java.jdbc$db_do_execute_prepared_statement.invokeStatic(jdbc.clj:732)
+	at clojure.java.jdbc$db_do_execute_prepared_statement.invoke(jdbc.clj:717)
+	at clojure.java.jdbc$db_do_prepared.invokeStatic(jdbc.clj:753)
+	at clojure.java.jdbc$db_do_prepared.doInvoke(jdbc.clj:739)
+	at clojure.lang.RestFn.invoke(RestFn.java:464)
+	at clojure.java.jdbc$execute_BANG_$execute_helper__11386.invoke(jdbc.clj:855)
+	at clojure.java.jdbc$execute_BANG_.invokeStatic(jdbc.clj:860)
+	at clojure.java.jdbc$execute_BANG_.doInvoke(jdbc.clj:841)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at scouter.db.db$getTeam.invokeStatic(db.clj:24)
+	at scouter.db.db$getTeam.invoke(db.clj:23)
+	at scouter.handler$eval12625.invokeStatic(form-init882205602571562136.clj:1)
+	at scouter.handler$eval12625.invoke(form-init882205602571562136.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6927)
+	at clojure.lang.Compiler.eval(Compiler.java:6890)
+	at clojure.core$eval.invokeStatic(core.clj:3105)
+	at clojure.core$eval.invoke(core.clj:3101)
+	at clojure.main$repl$read_eval_print__7408$fn__7411.invoke(main.clj:240)
+	at clojure.main$repl$read_eval_print__7408.invoke(main.clj:240)
+	at clojure.main$repl$fn__7417.invoke(main.clj:258)
+	at clojure.main$repl.invokeStatic(main.clj:258)
+	at clojure.main$repl.doInvoke(main.clj:174)
+	at clojure.lang.RestFn.invoke(RestFn.java:1523)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__7160.invoke(interruptible_eval.clj:87)
+	at clojure.lang.AFn.applyToHelper(AFn.java:152)
+	at clojure.lang.AFn.applyTo(AFn.java:144)
+	at clojure.core$apply.invokeStatic(core.clj:646)
+	at clojure.core$with_bindings_STAR_.invokeStatic(core.clj:1881)
+	at clojure.core$with_bindings_STAR_.doInvoke(core.clj:1881)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invokeStatic(interruptible_eval.clj:85)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invoke(interruptible_eval.clj:55)
+	at clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__7205$fn__7208.invoke(interruptible_eval.clj:222)
+	at clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__7200.invoke(interruptible_eval.clj:190)
+	at clojure.lang.AFn.run(AFn.java:22)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)

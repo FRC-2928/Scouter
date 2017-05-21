@@ -3,6 +3,7 @@
   :url "http://example.com/FIXME"
   :min-lein-version "2.0.0"
   :source-paths ["src/clj"]
+  :repl-options {:init-ns scouter.handler}
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [compojure "1.5.1"]
                  [ring/ring-defaults "0.2.1"]
@@ -14,7 +15,11 @@
                  [org.clojure/java.jdbc "0.3.6"]
                  [com.h2database/h2 "1.4.195"]
                  [org.clojure/clojurescript "1.9.542"]
-                 [reagent "0.6.2"]]
+                 [reagent "0.6.2"]
+                 [hiccup "1.0.5"]
+                 [ragtime "0.7.1"]
+                 [ring/ring-json "0.4.0"]
+                 [honeysql "0.9.0-beta2"]]
   :plugins [[lein-ring "0.9.7"]
             [lein-cljsbuild "1.1.6"]]
   :ring {:handler scouter.handler/app}
