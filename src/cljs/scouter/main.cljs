@@ -14,6 +14,10 @@
   [:input {:type "number"
            :value (key @value)
            :on-change #(reset! value (assoc-in @value [key] (-> % .-target .-value)))}])
+(defn text-input [value key]
+  [:input {:type "text"
+           :value (key @value)
+           :on-change #(reset! value (assoc-in @value [key] (-> % .-target .-value)))}])
 
 (defn score-component [value before after key]
 	[:div.numberinput
@@ -22,7 +26,10 @@
 		(map #(button value % key) after)])
 	
 
-		   
+(defn page-component []
+	[
+	[text-input state name]
+	])		   
 (defn ^:export run []
   (r/render [score-component state [] [1 5] :score]
             (.-body js/document)))
