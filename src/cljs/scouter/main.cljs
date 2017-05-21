@@ -16,6 +16,8 @@
   (secretary/set-config! :prefix "#")
   (secretary/defroute "/" []
     (session/put! :current-page views/team-list-page))
+  (secretary/defroute "/match" []
+    (session/put! :current-page views/match-input-page))
   (doto (History.)
         (events/listen
           HistoryEventType/NAVIGATE

@@ -448,3 +448,227 @@ SELECT * FROM teams WHERE number = ? [90001-195]
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
 	at java.lang.Thread.run(Thread.java:745)
+2017-05-21 07:43:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TEAMMATCHES" not found; SQL statement:
+
+DROP TABLE teammatches;
+DROP TABLE teams;
+ [42102-195]
+2017-05-21 07:43:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "MATCHES" not found; SQL statement:
+DROP TABLE matches;
+DROP TABLE team_matches;
+DROP TABLE teams;
+ [42102-195]
+2017-05-21 07:43:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "MATCHES" not found; SQL statement:
+DROP TABLE matches;
+DROP TABLE teammatches;
+DROP TABLE teams;
+ [42102-195]
+2017-05-21 07:43:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TEAMS" already exists; SQL statement:
+CREATE TABLE matches (
+	MATCHNUMBER INT PRIMARY KEY NOT NULL,
+	RED1 INT,
+	RED2 INT,
+	RED3 INT,
+	BLUE1 INT,
+	BLUE2 INT,
+	BLUE3 INT,
+	RED_POINTS INT,
+	BLUE_POINTS INT,
+	EVENT VARCHAR(20)
+);
+--;;
+CREATE TABLE teammatches (
+	ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	MATCHNUMBER INT,
+	TEAM INT,
+	AUTOGEARS INT,
+	LINECROSSED BOOLEAN,
+	SHOTS INT
+);
+--;;
+CREATE TABLE teams (
+	ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	NUMBER VARCHAR(5),
+	NAME VARCHAR(63),
+	PRIMARY_COLOR VARCHAR(7),
+	SECONDARY_COLOR VARCHAR(7)
+);
+ [42101-195]
+2017-05-21 07:49:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "NUMBER" not found; SQL statement:
+SELECT * FROM teammatches WHERE (number = ? AND matchnumber = ?) [42122-195]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.Comparison.optimize(Comparison.java:178)
+	at org.h2.expression.ConditionAndOr.optimize(ConditionAndOr.java:130)
+	at org.h2.command.dml.Select.prepare(Select.java:842)
+	at org.h2.command.Parser.prepareCommand(Parser.java:262)
+	at org.h2.engine.Session.prepareLocal(Session.java:573)
+	at org.h2.engine.Session.prepareCommand(Session.java:514)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1204)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:73)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:288)
+	at clojure.java.jdbc$prepare_statement.invokeStatic(jdbc.clj:457)
+	at clojure.java.jdbc$prepare_statement.doInvoke(jdbc.clj:425)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at clojure.lang.AFn.applyToHelper(AFn.java:156)
+	at clojure.lang.RestFn.applyTo(RestFn.java:132)
+	at clojure.core$apply.invokeStatic(core.clj:650)
+	at clojure.core$apply.invoke(core.clj:641)
+	at clojure.java.jdbc$db_query_with_resultset.invokeStatic(jdbc.clj:799)
+	at clojure.java.jdbc$db_query_with_resultset.invoke(jdbc.clj:757)
+	at clojure.java.jdbc$query.invokeStatic(jdbc.clj:832)
+	at clojure.java.jdbc$query.doInvoke(jdbc.clj:804)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at scouter.db.db$getTeamMatch.invokeStatic(db.clj:31)
+	at scouter.db.db$getTeamMatch.invoke(db.clj:30)
+	at scouter.handler$eval17860.invokeStatic(form-init882205602571562136.clj:1)
+	at scouter.handler$eval17860.invoke(form-init882205602571562136.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6927)
+	at clojure.lang.Compiler.eval(Compiler.java:6890)
+	at clojure.core$eval.invokeStatic(core.clj:3105)
+	at clojure.core$eval.invoke(core.clj:3101)
+	at clojure.main$repl$read_eval_print__7408$fn__7411.invoke(main.clj:240)
+	at clojure.main$repl$read_eval_print__7408.invoke(main.clj:240)
+	at clojure.main$repl$fn__7417.invoke(main.clj:258)
+	at clojure.main$repl.invokeStatic(main.clj:258)
+	at clojure.main$repl.doInvoke(main.clj:174)
+	at clojure.lang.RestFn.invoke(RestFn.java:1523)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__7160.invoke(interruptible_eval.clj:87)
+	at clojure.lang.AFn.applyToHelper(AFn.java:152)
+	at clojure.lang.AFn.applyTo(AFn.java:144)
+	at clojure.core$apply.invokeStatic(core.clj:646)
+	at clojure.core$with_bindings_STAR_.invokeStatic(core.clj:1881)
+	at clojure.core$with_bindings_STAR_.doInvoke(core.clj:1881)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invokeStatic(interruptible_eval.clj:85)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invoke(interruptible_eval.clj:55)
+	at clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__7205$fn__7208.invoke(interruptible_eval.clj:222)
+	at clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__7200.invoke(interruptible_eval.clj:190)
+	at clojure.lang.AFn.run(AFn.java:22)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-05-21 07:54:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "?[*]"; expected "[, ::, ="; SQL statement:
+? [42001-195]
+2017-05-21 07:54:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "?[*]"; expected "[, ::, ="; SQL statement:
+? [42001-195]
+2017-05-21 07:54:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "FILE" not found; SQL statement:
+script to file [42122-195]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.command.dml.ScriptBase.getFileName(ScriptBase.java:90)
+	at org.h2.command.dml.ScriptBase.deleteStore(ScriptBase.java:108)
+	at org.h2.command.dml.ScriptCommand.query(ScriptCommand.java:158)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:113)
+	at org.h2.command.Command.executeQuery(Command.java:201)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:111)
+	at clojure.java.jdbc$db_query_with_resultset$run_query_with_params__18233.invoke(jdbc.clj:790)
+	at clojure.java.jdbc$db_query_with_resultset.invokeStatic(jdbc.clj:800)
+	at clojure.java.jdbc$db_query_with_resultset.invoke(jdbc.clj:757)
+	at clojure.java.jdbc$query.invokeStatic(jdbc.clj:832)
+	at clojure.java.jdbc$query.doInvoke(jdbc.clj:804)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at scouter.db.db$query.invokeStatic(db.clj:38)
+	at scouter.db.db$query.invoke(db.clj:37)
+	at scouter.handler$eval19496.invokeStatic(form-init882205602571562136.clj:1)
+	at scouter.handler$eval19496.invoke(form-init882205602571562136.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6927)
+	at clojure.lang.Compiler.eval(Compiler.java:6890)
+	at clojure.core$eval.invokeStatic(core.clj:3105)
+	at clojure.core$eval.invoke(core.clj:3101)
+	at clojure.main$repl$read_eval_print__7408$fn__7411.invoke(main.clj:240)
+	at clojure.main$repl$read_eval_print__7408.invoke(main.clj:240)
+	at clojure.main$repl$fn__7417.invoke(main.clj:258)
+	at clojure.main$repl.invokeStatic(main.clj:258)
+	at clojure.main$repl.doInvoke(main.clj:174)
+	at clojure.lang.RestFn.invoke(RestFn.java:1523)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__7160.invoke(interruptible_eval.clj:87)
+	at clojure.lang.AFn.applyToHelper(AFn.java:152)
+	at clojure.lang.AFn.applyTo(AFn.java:144)
+	at clojure.core$apply.invokeStatic(core.clj:646)
+	at clojure.core$with_bindings_STAR_.invokeStatic(core.clj:1881)
+	at clojure.core$with_bindings_STAR_.doInvoke(core.clj:1881)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invokeStatic(interruptible_eval.clj:85)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invoke(interruptible_eval.clj:55)
+	at clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__7205$fn__7208.invoke(interruptible_eval.clj:222)
+	at clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__7200.invoke(interruptible_eval.clj:190)
+	at clojure.lang.AFn.run(AFn.java:22)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-05-21 07:55:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "FILE" not found; SQL statement:
+script to file [42122-195]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.command.dml.ScriptBase.getFileName(ScriptBase.java:90)
+	at org.h2.command.dml.ScriptBase.deleteStore(ScriptBase.java:108)
+	at org.h2.command.dml.ScriptCommand.query(ScriptCommand.java:158)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:113)
+	at org.h2.command.Command.executeQuery(Command.java:201)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:111)
+	at clojure.java.jdbc$db_query_with_resultset$run_query_with_params__18233.invoke(jdbc.clj:790)
+	at clojure.java.jdbc$db_query_with_resultset.invokeStatic(jdbc.clj:800)
+	at clojure.java.jdbc$db_query_with_resultset.invoke(jdbc.clj:757)
+	at clojure.java.jdbc$query.invokeStatic(jdbc.clj:832)
+	at clojure.java.jdbc$query.doInvoke(jdbc.clj:804)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at scouter.db.db$query.invokeStatic(db.clj:38)
+	at scouter.db.db$query.invoke(db.clj:37)
+	at scouter.handler$eval19498.invokeStatic(form-init882205602571562136.clj:1)
+	at scouter.handler$eval19498.invoke(form-init882205602571562136.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6927)
+	at clojure.lang.Compiler.eval(Compiler.java:6890)
+	at clojure.core$eval.invokeStatic(core.clj:3105)
+	at clojure.core$eval.invoke(core.clj:3101)
+	at clojure.main$repl$read_eval_print__7408$fn__7411.invoke(main.clj:240)
+	at clojure.main$repl$read_eval_print__7408.invoke(main.clj:240)
+	at clojure.main$repl$fn__7417.invoke(main.clj:258)
+	at clojure.main$repl.invokeStatic(main.clj:258)
+	at clojure.main$repl.doInvoke(main.clj:174)
+	at clojure.lang.RestFn.invoke(RestFn.java:1523)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__7160.invoke(interruptible_eval.clj:87)
+	at clojure.lang.AFn.applyToHelper(AFn.java:152)
+	at clojure.lang.AFn.applyTo(AFn.java:144)
+	at clojure.core$apply.invokeStatic(core.clj:646)
+	at clojure.core$with_bindings_STAR_.invokeStatic(core.clj:1881)
+	at clojure.core$with_bindings_STAR_.doInvoke(core.clj:1881)
+	at clojure.lang.RestFn.invoke(RestFn.java:425)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invokeStatic(interruptible_eval.clj:85)
+	at clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invoke(interruptible_eval.clj:55)
+	at clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__7205$fn__7208.invoke(interruptible_eval.clj:222)
+	at clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__7200.invoke(interruptible_eval.clj:190)
+	at clojure.lang.AFn.run(AFn.java:22)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-05-21 07:56:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "?[*]"; expected "[, ::, ="; SQL statement:
+? [42001-195]
+2017-05-21 07:56:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM *[*]"; expected "identifier"; SQL statement:
+SELECT * FROM * [42001-195]
+2017-05-21 07:57:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM *[*]"; expected "identifier"; SQL statement:
+SELECT * FROM * [42001-195]
+2017-05-21 07:57:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM *[*]"; expected "identifier"; SQL statement:
+SELECT * FROM * [42001-195]
+2017-05-21 09:19:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "M" not found; SQL statement:
+SELECT m.shots, t.number FROM m teammatches, t teams  [42102-195]

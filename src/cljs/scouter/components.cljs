@@ -10,24 +10,29 @@
   [:h8 message])
 
 
-(defn button [value change key]
-  [:button {:on-click #(swap! value (fn [v] (assoc-in v [key] (+ (js/Number change) (js/Number (:score v))))))}
-   change])
+(defn button [value change loc]
+    [:button {:on-click #(swap! value (fn [v] (assoc-in v loc (+ change (js/Number (get-in v loc))))))} change])
 
-(defn number-input [value key]
+(defn number-input [value loc]
   [:input {:type "number"
-           :value (key @value)
-           :on-change #(reset! value (assoc-in @value [key] (-> % .-target .-value)))}])
-(defn text-input [value key]
-  [:input {:type "text"
-           :value (key @value)
-           :on-change #(reset! value (assoc-in @value [key] (-> % .-target .-value)))}])
+           :value (get-in @value loc)
+           :on-change #(reset! value (assoc-in @value loc (-> % .-target .-value)))}])
 
-(defn score-component [value before after key]
+(defn text-input [value loc]
+  [:input {:type "text"
+           :value (get-in @value loc)
+           :on-change #(reset! value (assoc-in @value loc (-> % .-target .-value)))}])
+
+(defn boolean-input [value loc]
+  [:input {:type "checkbox"
+           :checked (get-in @value loc)
+           :on-change #(reset! value (assoc-in @value loc (-> % .-target .-checked)))}]
+  )
+(defn score-component [value before after loc]
   [:div.numberinput
-   (map #(button value % key) before)
-   [number-input value key]
-   (map #(button value % key) after)])
+   (map #(button value % loc) before)
+   [number-input value loc]
+   (map #(button value % loc) after)])
 (defn graph-component [id] [:div {:class graph :id id}])
 
 

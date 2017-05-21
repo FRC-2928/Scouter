@@ -1,3 +1,5 @@
 DROP TABLE matches;
-DROP TABLE team_matches;
+--;;
+DROP TABLE teammatches;
+--;;
 DROP TABLE teams;
