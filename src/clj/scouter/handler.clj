@@ -10,7 +10,8 @@
 (def main-page (h/html
                  [:head [:title "Scouter"]
                         [:script {:src "js/main.js"}]]
-                 [:body "Please enable javascript!"]))
+                 [:body [:div {:id "app"} "Please enable javascript!"]
+                  [:script "scouter.main.init();"]]))
 
 (defroutes app-routes
   (GET "/" [] main-page)

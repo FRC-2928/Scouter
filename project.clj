@@ -19,7 +19,10 @@
                  [hiccup "1.0.5"]
                  [ragtime "0.7.1"]
                  [ring/ring-json "0.4.0"]
-                 [honeysql "0.9.0-beta2"]]
+                 [honeysql "0.9.0-beta2"]
+                 [secretary "1.2.3"]
+                 [cljs-ajax "0.6.0"]
+                 [reagent-utils "0.2.1"]]
   :plugins [[lein-ring "0.9.7"]
             [lein-cljsbuild "1.1.6"]]
   :ring {:handler scouter.handler/app}
